@@ -1,0 +1,49 @@
+:root {
+    --hot-purple: rgb(218, 15, 218);
+    --blue: var(blue);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: Verdana, Tahoma, sans-serif;
+}
+
+body {
+    font-weight: 600;
+}
+
+/* OUTSIDE CONTAINER */
+.outside-container {
+    padding: 20px;
+}
+
+
+/* TOP BAR SECTION  */
+.button-timer-bar p {
+    float: right;
+    font-size: 20px;
+}
+
+button {
+    font-size: 20px;
+    border: none;
+    padding: 0;
+    background: none;
+    color: var(--hot-purple)
+}
+
+button:hover {
+    color: var(--blue);
+}
+
+/* INSIDE CONTAINER */
+.inside-container {
+    background: orange;
+    height: 100%;
+    width: 50%;
+    margin: 0 auto;
+    padding: 15px;
+}
