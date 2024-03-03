@@ -18,9 +18,8 @@
 
         <!-- inside container -->
         <div class="inside-container">
-
             <!-- start of quiz -->
-            <header class="begin-quiz">
+            <header class="begin-quiz" id="begin-quiz">
                 <h1>WELCOME TO THE JAVASCRIPT CODING QUIZ</h1>
                 <p>Press START QUIZ to begin quiz</p>
                 <button class="button-start">START QUIZ</button>
@@ -28,7 +27,7 @@
 
             <!-- Main quiz content -->
             <main>
-                <section class="question-screen"> 
+                <section class="question-screen" id="question-screen"> 
                     <h2 class="question">Enter Question Here</h2>
                     <ul>
                         <li class="choice">Choice 1</li>
@@ -38,7 +37,7 @@
                     </ul>
                 </section>
 
-                <section class="end-quiz">
+                <section class="end-quiz" id="end-quiz">
                     <h2>END OF QUIZ!</h2>                    
                     <p>Your score is: 0</p>
                     <form id="highscores-list">
@@ -48,15 +47,15 @@
                     </form>
                 </section>
 
-                <section class ="highscores-screen">
+                <section class ="highscores-screen" id="highscores-screen">
                     <h2>HIGHSCORES:</h2>
                     <ol>
                         <li>Name: - Score:</li>
                         <li>Name: - Score:</li>
                         <li>Name: - Score:</li>
                     </ol>
-                    <button class="go-back-btn">Go back</button>
-                    <button class="clear-highscore-btn">Clear Highscores</button>
+                    <button class="go-back-btn" id="go-back-btn">Go back</button>
+                    <button class="clear-highscore-btn" id="clear-highscore-btn">Clear Highscores</button>
                 </section>
 
 
