@@ -1,6 +1,9 @@
 :root {
-    --hot-purple: rgb(218, 15, 218);
-    --blue: var(blue);
+    --view-highscores: rgb(218, 15, 218);
+    --btn-background: purple;
+    --btn-alt-background: black;
+    --btn-text: gold;
+    --highscores-btn-hover: blue;
 }
 
 * {
@@ -17,7 +20,11 @@ body {
 
 /* OUTSIDE CONTAINER */
 .outside-container {
-    padding: 20px;
+    padding: 30px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
 }
 
 
@@ -27,23 +34,102 @@ body {
     font-size: 20px;
 }
 
-button {
+.view-highscore-btn {
     font-size: 20px;
     border: none;
-    padding: 0;
     background: none;
-    color: var(--hot-purple)
+    padding: 0;
+    color: var(--view-highscores);
 }
 
-button:hover {
-    color: var(--blue);
+.view-highscore-btn:hover {
+    color: var(--highscores-btn-hover);
 }
 
 /* INSIDE CONTAINER */
 .inside-container {
-    background: orange;
-    height: 100%;
+    border: 1px solid purple;
+    /* color: gold; */
+
+    height: 60%;
     width: 50%;
     margin: 0 auto;
     padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 75px 0px;
+}
+
+li {
+    list-style: none;
+}
+
+/* BEGINNING OF QUIZ */
+.begin-quiz {
+    /* display: none; */
+    justify-content: center;
+}
+
+.begin-quiz h1, .begin-quiz p, .question-screen h2 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.begin-quiz p {
+    font-size: 20px;
+}
+
+.button-start {
+    display: block;
+    margin: 5px auto;
+    padding: 2px 10px;
+    font-size: 20px;
+    border-radius: 12px;
+    border: 1px solid black;
+    color: var(--btn-text);
+    background: var(--btn-background);
+}
+
+.button-start:hover {
+    color: var(--btn-text);
+    background: var(--btn-alt-background);
+}
+
+/* MAIN QUIZ SECTION */
+.question-screen {
+    /* display: block; */
+    display: none;
+}
+
+/* END OF QUIZ */
+.end-quiz {
+    display: none;
+    /* display: block; */
+}
+
+.end-quiz h2 {
+    text-align: center;
+}
+
+/* HIGHSCORES SCREEN */
+.highscores-screen {
+    display: none;
+    /* display: block; */
+}
+
+.go-back-btn, .clear-highscore-btn {
+    margin: 5px auto;
+    padding: 2px 10px;
+    font-size: 20px;
+    border-radius: 12px;
+    border: 1px solid black;
+    color: var(--btn-text);
+    background: var(--btn-background);
+}
+
+.go-back-btn:hover, .clear-highscore-btn:hover {
+    color: var(--btn-text);
+    background: var(--btn-alt-background);
 }

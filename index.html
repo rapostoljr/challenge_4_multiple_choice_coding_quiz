@@ -12,7 +12,7 @@
     <div class="outside-container">
         <!-- top-bar section -->
         <nav class="button-timer-bar">
-            <button>View Highscores</button>
+            <button class="view-highscore-btn">View Highscores</button>
             <p>Timer: 0</p>
         </nav>
 
@@ -21,19 +21,51 @@
 
             <!-- start of quiz -->
             <header class="begin-quiz">
-                <h1>WELCOME TO THE CODING QUIZ</h1>
-                <p>Press Start to begin quiz</p>
+                <h1>WELCOME TO THE JAVASCRIPT CODING QUIZ</h1>
+                <p>Press START QUIZ to begin quiz</p>
+                <button class="button-start">START QUIZ</button>
             </header>
 
             <!-- Main quiz content -->
             <main>
+                <section class="question-screen"> 
+                    <h2>Enter Question Here</h2>
+                    <ul>
+                        <li>Answer 1</li>
+                        <li>Answer 2</li>
+                        <li>Answer 3</li>
+                        <li>Answer 4</li>
+                    </ul>
+                </section>
+
+                <section class="end-quiz">
+                    <h2>END OF QUIZ!</h2>                    
+                    <p>Your score is: 0</p>
+                    <form id="highscores-list">
+                        Enter initials: 
+                        <input type="text" id="highscores-initial-input" placeholder="Enter Initials Here" />
+                        <button class="highscore-submit-btn">Submit</button>
+                    </form>
+                </section>
+
+                <section class ="highscores-screen">
+                    <h2>HIGHSCORES:</h2>
+                    <ol>
+                        <li>Name: - Score:</li>
+                        <li>Name: - Score:</li>
+                        <li>Name: - Score:</li>
+                    </ol>
+                    <button class="go-back-btn">Go back</button>
+                    <button class="clear-highscore-btn">Clear Highscores</button>
+                </section>
+
 
             </main>
 
         </div>
 
     </div>
-    
+   <script src="./assets/js/script.js"></script> 
 </body>
 
 </html>
