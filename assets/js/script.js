@@ -28,6 +28,7 @@ function countdown() {
 startButton.addEventListener("click", function(event) {
     // need to create something to open the question-screen    
     countdown();
+    newQuestion();
     beginQuizSection.style.display='none';
     questionScreenSection.style.display='block';
     endQuizSection.style.display='none';

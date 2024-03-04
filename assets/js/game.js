@@ -1,6 +1,24 @@
+var question = document.getElementById('question');
+var choices = document.getElementsByClassName('choice');
+
+var currentQuestion = [];
+var questionsLeft = [];
+
+function newQuestion() {
+    questionsLeft = [...questions];
+    var questionsIndex = Math.floor(Math.random() * questionsLeft.length);
+    currentQuestion = questionsLeft[questionsIndex];
+    question.textContent = currentQuestion.question;
+
+//     for (var i=1; i<=4; i++) {
+
+//         choices.textContent = currentQuestion.choice[i];
+// }
+    }
 
 
-var questions = [ 
+
+var questions = [
 {
     question: 'Commonly used data types do not use.',
     choice1: '1. strings',
