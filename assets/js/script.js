@@ -104,11 +104,15 @@ submitHighScore.addEventListener("click", function(event) {
     liHighScore.textContent = `Name: ${highScoresList.slice(-1)} || Score: ${highscore}`
     highscoresListHTML.appendChild(liHighScore)
 
+    console.log(highscoresListHTML)
+
     // need to create something to open the highscores-screen
     viewHighScoreScreen();
 })
 
 clearHighScoreBtn.addEventListener("click", function(event) {
     // need to create something to clear highscores
-    // highScoresList.length
+    // for (let i = 0; i < highScoresList.length; i++) {
+
+    // }
 })

@@ -1,7 +1,7 @@
 # Coding Multiple Choice Quiz
 
 ## DESCRIPTION
-I created this project to create a quiz to test my knowledge of JavaScript.
+I created this project to create a quiz to test participants knowledge of JavaScript. This also helped me to practice what I have learned in class and showcase it here. From showing my knowledge of HTML, JavaScript, as well as CSS. Although this was challenging, I never gave up and kept trying to figure out what was wrong. By doing this, it helped to expand my knowledge and my understanding of all these languages. I was motivated to show that I have a better understanding from when I first started the class.
 
 ## HOW TO USE
 To begin the quiz, hit 'START QUIZ'. \
