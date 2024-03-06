@@ -30,10 +30,10 @@
             <main>
                 <section class="question-screen" id="question-screen"> 
                     <h2 class="question" id="question">Enter Question Here</h2>
-                        <button class="choice choice1-btn" data-number="1">Choice 1</button>
-                        <button class="choice choice2-btn" data-number="2">Choice 2</button>
-                        <button class="choice choice3-btn" data-number="3">Choice 3</button>
-                        <button class="choice choice4-btn" data-number="4">Choice 4</button>
+                        <button class="choice choice1-btn">Choice 1</button>
+                        <button class="choice choice2-btn">Choice 2</button>
+                        <button class="choice choice3-btn">Choice 3</button>
+                        <button class="choice choice4-btn">Choice 4</button>
                 </section>
 
                 <section class="end-quiz" id="end-quiz">
@@ -41,22 +41,18 @@
                     <p>Your score is: 0</p>
                     <form id="highscores-list">
                         Enter initials: 
-                        <input type="text" id="highscores-initial-input" placeholder="Enter Initials Here" />
+                        <input type="text" id="highscores-initials-input" placeholder="Enter Initials Here" />
                         <button class="highscore-submit-btn" id="highscore-submit-btn">Submit</button>
                     </form>
                 </section>
 
                 <section class ="highscores-screen" id="highscores-screen">
                     <h2>HIGHSCORES:</h2>
-                    <ol>
-                        <li>Name: - Score:</li>
-                        <li>Name: - Score:</li>
-                        <li>Name: - Score:</li>
+                    <ol id="highscore-list">
                     </ol>
                     <button class="go-back-btn" id="go-back-btn">Go back</button>
                     <button class="clear-highscore-btn" id="clear-highscore-btn">Clear Highscores</button>
                 </section>
-
 
             </main>
 
