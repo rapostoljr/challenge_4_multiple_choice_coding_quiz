@@ -8,7 +8,7 @@ To begin the quiz, hit 'START QUIZ'. \
 To view the current High Scores, click 'View Highscores' on the top left of the screen.
 
 Once the quiz has begun, you cannot go back. You will have 60 seconds to finish the quiz.
-The timer is located on the top right of the screen and will count down. You will be given a series of questions. If you choose an incorrect answer, you will be deducted 5 seconds. Once all questions are finish or the timer reaches 0, your quiz will end and then you will be prompted to enter your initials to possibly be on the leaderboards.
+The timer is located on the top right of the screen and will count down. You will be given a series of questions. If you choose an incorrect answer, you will be deducted 10 seconds. Once all questions are finish or the timer reaches 0, your quiz will end and then you will be prompted to enter your initials to possibly be on the leaderboards.
 
 
 ## ACCEPTANCE CRITERIA

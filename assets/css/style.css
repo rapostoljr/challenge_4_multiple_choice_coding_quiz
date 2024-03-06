@@ -96,6 +96,7 @@ li {
 /* MAIN QUIZ SECTION */
 .question-screen {
     display: none;
+    padding-bottom: 50px;
 }
 
 .choice {
@@ -112,6 +113,11 @@ li {
 .choice:hover {
     color: var(--btn-text);
     background: var(--btn-alt-background);
+}
+
+#correctWrong {
+    color: grey;
+    border-top-style: solid;
 }
 
 /* END OF QUIZ */

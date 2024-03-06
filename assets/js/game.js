@@ -64,7 +64,7 @@ var questions = [
         choice2: '2. <script src="xxx.js" />',
         choice3: '3. <script exec="xxx.js" />',
         choice4: '4. <script rel="javascript" href="xxx.js" />',
-        answer: 1,
+        answer: 2,
     }
     ]
 
@@ -93,7 +93,7 @@ for (let i=0; i < choices.length; i++) {
         if (i+1 === currentQuestion.answer) {
             newQuestion();
         } else {
-            timeLeft -= 5
+            timeLeft -= 10
             newQuestion();
         }
 })

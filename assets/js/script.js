@@ -13,57 +13,86 @@ var highscoresListHTML = document.getElementById('highscore-list')
 
 var highScoresList = []
 var timeLeft = 60;
-var highscore
+var highscore;
 
-function countdown() {
-    var timeInterval = setInterval(function () {
-      timerCountdown.textContent = 'Timer: ' + timeLeft;
-      if (timeLeft <= 0 || questionsLeft.length === 0) {
-        highscore = timeLeft;
-        clearInterval(timeInterval);
-        timerCountdown.textContent = 'Timer: 0';
-        console.log(highscore)
-
-        // need to create something to go to end-quiz
-        beginQuizSection.style.display='none';
-        questionScreenSection.style.display='none';
-        endQuizSection.style.display='block';
-        highscoresScreenSection.style.display='none';
-        viewHighscoreButton.style.display='none';
-      }
-      timeLeft--;
-    }, 1000);
-  }
-
-startButton.addEventListener("click", function(event) {
-    // need to create something to open the question-screen    
+function gameStart() {
+    timeLeft = 60
+    questionsLeft = [...questions];
     countdown();
     newQuestion();
-    beginQuizSection.style.display='none';
-    questionScreenSection.style.display='block';
-    endQuizSection.style.display='none';
-    highscoresScreenSection.style.display='none';
-    viewHighscoreButton.style.display='none';
-})
+}
 
-viewHighscoreButton.addEventListener("click", function(event) {
-    // need to create something to open the highscores-screen
-    beginQuizSection.style.display='none';
-    questionScreenSection.style.display='none';
-    endQuizSection.style.display='none';
-    highscoresScreenSection.style.display='block';
-    viewHighscoreButton.style.display='none';
-    timerCountdown.style.display='none';
-})
-
-goBackBtn.addEventListener("click", function(event) {
-    // need to create something to open the begin-quiz
+function viewBeginQuiz() {
     beginQuizSection.style.display='';
     questionScreenSection.style.display='none';
     endQuizSection.style.display='none';
     highscoresScreenSection.style.display='none';
     viewHighscoreButton.style.display='';
     timerCountdown.style.display='';
+}
+
+function viewQuestionScreen() {
+    beginQuizSection.style.display='none';
+    questionScreenSection.style.display='block';
+    endQuizSection.style.display='none';
+    highscoresScreenSection.style.display='none';
+    viewHighscoreButton.style.display='none';
+}
+
+function viewEndQuiz() {
+    beginQuizSection.style.display='none';
+    questionScreenSection.style.display='none';
+    endQuizSection.style.display='block';
+    highscoresScreenSection.style.display='none';
+    viewHighscoreButton.style.display='none';
+}
+
+function viewHighScoreScreen() {
+    beginQuizSection.style.display='none';
+    questionScreenSection.style.display='none';
+    endQuizSection.style.display='none';
+    highscoresScreenSection.style.display='block';
+    viewHighscoreButton.style.display='none';
+    timerCountdown.style.display='none';
+}
+
+function countdown() {
+    var timeInterval = setInterval(function () {
+        timerCountdown.textContent = 'Timer: ' + timeLeft;
+        if (timeLeft === 0 || questionsLeft.length === 0) {
+            highscore = timeLeft;
+            clearInterval(timeInterval);
+            timerCountdown.textContent = 'Timer: 0';            
+            // need to create something to go to end-quiz
+            viewEndQuiz();
+
+
+      } else if (timeLeft < 0) {
+        timeLeft = 0;
+        highscore = timeLeft;
+        clearInterval(timeInterval);
+        timerCountdown.textContent = 'Timer: 0';
+
+        viewEndQuiz();
+      }
+      timeLeft--;
+    }, 1000);
+  }
+
+startButton.addEventListener("click", function(event) {
+    gameStart();
+    // need to create something to open the question-screen
+    viewQuestionScreen();
+})
+
+viewHighscoreButton.addEventListener("click", function(event) {
+    // need to create something to open the highscores-screen
+    viewHighScoreScreen();
+})
+
+goBackBtn.addEventListener("click", function(event) {
+    // need to create something to open the begin-quiz
+    viewBeginQuiz();
 })
 
 submitHighScore.addEventListener("click", function(event) {
@@ -72,19 +101,14 @@ submitHighScore.addEventListener("click", function(event) {
     var userInitials = highscoresInput.value
     highScoresList.push(userInitials)
     var liHighScore = document.createElement("li")
-    liHighScore.textContent = `Name: ${highScoresList[0]} || Score: ${highscore}`
+    liHighScore.textContent = `Name: ${highScoresList.slice(-1)} || Score: ${highscore}`
     highscoresListHTML.appendChild(liHighScore) 
     
-    // need to create something to open the begin-quiz
-    beginQuizSection.style.display='none';
-    questionScreenSection.style.display='none';
-    endQuizSection.style.display='none';
-    highscoresScreenSection.style.display='block';
-    viewHighscoreButton.style.display='none';
-    timerCountdown.style.display='';
+    // need to create something to open the highscores-screen
+    viewHighScoreScreen();
 })
 
 clearHighScoreBtn.addEventListener("click", function(event) {
     // need to create something to clear highscores
-    
+    highScoresList.length
 })
