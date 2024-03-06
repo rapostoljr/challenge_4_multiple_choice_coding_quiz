@@ -1,5 +1,6 @@
 var question = document.getElementById('question');
 var choices = document.getElementsByClassName('choice');
+var correctWrong = document.getElementById('correctWrong');
 
 var questions = [
     {
@@ -75,7 +76,7 @@ var currentQuestionIndex
 function newQuestion() {
     if (questionsLeft.length > 0) {
         var questionsIndex = Math.floor(Math.random() * questionsLeft.length);
-        currentQuestionIndex = questionsIndex
+        currentQuestionIndex = questionsIndex;
         currentQuestion = questionsLeft[questionsIndex];
         question.textContent = currentQuestion.question;
 
@@ -88,14 +89,16 @@ function newQuestion() {
 for (let i=0; i < choices.length; i++) {
     choices[i].addEventListener('click', function () {
         if (questionsLeft.length > 0) {
-            questionsLeft.splice(currentQuestionIndex, 1)
+            questionsLeft.splice(currentQuestionIndex, 1);
         }
         if (i+1 === currentQuestion.answer) {
+            correctWrong.textContent = 'Correct!';
             newQuestion();
         } else {
             timeLeft -= 10
+            correctWrong.textContent = 'Wrong!';
             newQuestion();
         }
-})
+    })
 }
 

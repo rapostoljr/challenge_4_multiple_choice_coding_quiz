@@ -10,6 +10,7 @@ var submitHighScore = document.getElementById('highscore-submit-btn');
 var clearHighScoreBtn = document.getElementById('clear-highscore-btn');
 var highscoresInput = document.getElementById('highscores-initials-input');
 var highscoresListHTML = document.getElementById('highscore-list')
+var endOfGameText = document.querySelector('#end-of-game-text');
 
 var highScoresList = []
 var timeLeft = 60;
@@ -62,17 +63,16 @@ function countdown() {
         if (timeLeft === 0 || questionsLeft.length === 0) {
             highscore = timeLeft;
             clearInterval(timeInterval);
-            timerCountdown.textContent = 'Timer: 0';            
+            timerCountdown.textContent = 'Timer: 0';
+            endOfGameText.textContent = `Your score is: ${timeLeft}`            
             // need to create something to go to end-quiz
             viewEndQuiz();
-
-
       } else if (timeLeft < 0) {
         timeLeft = 0;
         highscore = timeLeft;
         clearInterval(timeInterval);
         timerCountdown.textContent = 'Timer: 0';
-
+        endOfGameText.textContent = `Your score is: ${timeLeft}` 
         viewEndQuiz();
       }
       timeLeft--;
@@ -102,13 +102,13 @@ submitHighScore.addEventListener("click", function(event) {
     highScoresList.push(userInitials)
     var liHighScore = document.createElement("li")
     liHighScore.textContent = `Name: ${highScoresList.slice(-1)} || Score: ${highscore}`
-    highscoresListHTML.appendChild(liHighScore) 
-    
+    highscoresListHTML.appendChild(liHighScore)
+
     // need to create something to open the highscores-screen
     viewHighScoreScreen();
 })
 
 clearHighScoreBtn.addEventListener("click", function(event) {
     // need to create something to clear highscores
-    highScoresList.length
+    // highScoresList.length
 })
