@@ -9,8 +9,9 @@ var endQuizSection = document.getElementById('end-quiz');
 var submitHighScore = document.getElementById('highscore-submit-btn');
 var clearHighScoreBtn = document.getElementById('clear-highscore-btn');
 var highscoresInput = document.getElementById('highscores-initials-input');
-var highscoresListHTML = document.getElementById('highscore-list')
+var highscoresListHTML = document.getElementById('highscore-list');
 var endOfGameText = document.querySelector('#end-of-game-text');
+var liHighScore = document.createElement("li");
 
 var highScoresList = []
 var timeLeft = 60;
@@ -60,19 +61,18 @@ function viewHighScoreScreen() {
 function countdown() {
     var timeInterval = setInterval(function () {
         timerCountdown.textContent = 'Timer: ' + timeLeft;
-        if (timeLeft === 0 || questionsLeft.length === 0) {
+        if (timeLeft === 0 || questionsLeft.length === 0 && timeLeft === 0) {
             highscore = timeLeft;
             clearInterval(timeInterval);
             timerCountdown.textContent = 'Timer: 0';
             endOfGameText.textContent = `Your score is: ${timeLeft}`            
             // need to create something to go to end-quiz
-            viewEndQuiz();
-      } else if (timeLeft < 0) {
-        timeLeft = 0;
-        highscore = timeLeft;
+            viewEndQuiz();            
+      } else if (timeLeft < 0 && questionsLeft.length === 0) {
+        highscore = 0;
         clearInterval(timeInterval);
         timerCountdown.textContent = 'Timer: 0';
-        endOfGameText.textContent = `Your score is: ${timeLeft}` 
+        endOfGameText.textContent = `Your score is: ${highscore}` 
         viewEndQuiz();
       }
       timeLeft--;
@@ -88,6 +88,10 @@ startButton.addEventListener("click", function(event) {
 viewHighscoreButton.addEventListener("click", function(event) {
     // need to create something to open the highscores-screen
     viewHighScoreScreen();
+    var storedPlayerName = localStorage.getItem("player-name");
+    var storedPlayerScore = localStorage.getItem("player-score");
+    liHighScore.textContent = `Name: ${storedPlayerName} || Score: ${storedPlayerScore}`;
+    highscoresListHTML.appendChild(liHighScore)
 })
 
 goBackBtn.addEventListener("click", function(event) {
@@ -95,16 +99,19 @@ goBackBtn.addEventListener("click", function(event) {
     viewBeginQuiz();
 })
 
+var localHighScores = {}
+
 submitHighScore.addEventListener("click", function(event) {
     event.preventDefault();
 
-    var userInitials = highscoresInput.value
-    highScoresList.push(userInitials)
-    var liHighScore = document.createElement("li")
-    liHighScore.textContent = `Name: ${highScoresList.slice(-1)} || Score: ${highscore}`
-    highscoresListHTML.appendChild(liHighScore)
+    var userInitials = highscoresInput.value;
+    highScoresList.push(userInitials);
 
-    console.log(highscoresListHTML)
+    localStorage.setItem("player-name", userInitials);
+    localStorage.setItem("player-score", highscore);
+
+    liHighScore.textContent = `Name: ${userInitials} || Score: ${highscore}`;
+    highscoresListHTML.appendChild(liHighScore);
 
     // need to create something to open the highscores-screen
     viewHighScoreScreen();

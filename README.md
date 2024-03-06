@@ -27,4 +27,4 @@ THEN I can save my initials and score
 ## VIEWING MY PORTFOLIO
 To view live page, open your browser (preferably Google Chrome), then enter "<i>enter_live_page_here</i>" in your address bar.
 
-Link to Deployed Application: "<i>enter_deployed_github_link_here</i>"
+Link to Deployed Application: <i>https://github.com/rapostoljr/challenge_4_multiple_choice_coding_quiz.git</i>
