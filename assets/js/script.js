@@ -60,20 +60,21 @@ function viewHighScoreScreen() {
 function countdown() {
     var timeInterval = setInterval(function () {
         timerCountdown.textContent = 'Timer: ' + timeLeft;
-        if (questionsLeft.length === 0 && timeLeft === 0 || questionsLeft.length === 0) {
+        if (timeLeft <= 0 && questionsLeft.length === 0 || timeLeft < 0)  {
+            highscore = 0;
+            clearInterval(timeInterval);
+            timerCountdown.textContent = 'Timer: 0';
+            endOfGameText.textContent = `Your score is: ${highscore}`;
+            // need to create something to go to end-quiz 
+            viewEndQuiz();
+      } else if (questionsLeft.length === 0) {
             highscore = timeLeft;
             clearInterval(timeInterval);
             timerCountdown.textContent = 'Timer: 0';
-            endOfGameText.textContent = `Your score is: ${timeLeft}`;
+            endOfGameText.textContent = `Your score is: ${highscore}`;
             // need to create something to go to end-quiz
             viewEndQuiz();            
-      } else if (timeLeft < 0 && questionsLeft.length === 0 || timeLeft <= 0) {
-        highscore = 0;
-        clearInterval(timeInterval);
-        timerCountdown.textContent = 'Timer: 0';
-        endOfGameText.textContent = `Your score is: ${highscore}`; 
-        viewEndQuiz();
-      }
+  }
       timeLeft--;
     }, 1000);
   }
@@ -87,10 +88,13 @@ startButton.addEventListener("click", function(event) {
 viewHighscoreButton.addEventListener("click", function(event) {
     // need to create something to open the highscores-screen
     viewHighScoreScreen();
-    var storedPlayerName = localStorage.getItem("player-name");
-    var storedPlayerScore = localStorage.getItem("player-score");
-    liHighScore.textContent = `Name: ${storedPlayerName} || Score: ${storedPlayerScore}`;
-    highscoresListHTML.appendChild(liHighScore);
+    console.log(`length: ${highScoreList.length}`);
+    for (let i=0; i < highScoreList.length; i++) {
+        console.log(`i: ${i}`);
+        var newHighScore = document.createElement("li")
+        newHighScore.textContent = `Name: ${highScoreList[i].playerName} || Score: ${highScoreList[i].playerScore}`;
+        highscoresListHTML.appendChild(newHighScore);
+    }
 })
 
 goBackBtn.addEventListener("click", function(event) {
@@ -98,30 +102,32 @@ goBackBtn.addEventListener("click", function(event) {
     viewBeginQuiz();
 })
 
-var highScoresList = [];
-var localHighScore = {};
-// localHighScore.playerName = playerName;
-// localHighScore.playerScore = playerScore;
+var highScoreList = JSON.parse(localStorage.getItem('highScoreList')) || [];
+var emptyHighScoreList = [];
+localStorage.setItem('highScoreList', JSON.stringify(highScoreList));
 
 submitHighScore.addEventListener("click", function(event) {
     event.preventDefault();
 
-    var userInitials = highscoresInput.value;
-    highScoresList.push({userInitials});
+    var localHighScore = {
+        playerName: highscoresInput.value,
+        playerScore: highscore
+    }
 
-    localStorage.setItem("playerName", userInitials);
-    localStorage.setItem("playerScore", highscore);
+    highScoreList.push(localHighScore);
+    localStorage.setItem('highScoreList', JSON.stringify(highScoreList));
 
-    liHighScore.textContent = `Name: ${userInitials} || Score: ${highscore}`;
-    highscoresListHTML.appendChild(liHighScore);
-
-    // need to create something to open the highscores-screen
+    for (let i=0; i < highScoreList.length; i++) {
+        console.log(`i: ${i}`);
+        var newHighScore = document.createElement("li")
+        newHighScore.textContent = `Name: ${highScoreList[i].playerName} || Score: ${highScoreList[i].playerScore}`;
+        highscoresListHTML.appendChild(newHighScore);
+    }
     viewHighScoreScreen();
 })
 
 clearHighScoreBtn.addEventListener("click", function(event) {
-    // need to create something to clear highscores
-    // for (let i = 0; i < highScoresList.length; i++) {
-
-    // }
+    localStorage.clear();
+    localStorage.setItem('highScoreList', JSON.stringify(emptyHighScoreList));
+    liHighScore.textContent = "";
 })
