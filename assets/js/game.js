@@ -71,7 +71,7 @@ var questions = [
 
 var currentQuestion = [];
 var questionsLeft = [...questions];
-var currentQuestionIndex
+var currentQuestionIndex;
 
 function newQuestion() {
     if (questionsLeft.length > 0) {
@@ -95,7 +95,7 @@ for (let i=0; i < choices.length; i++) {
             correctWrong.textContent = 'Correct!';
             newQuestion();
         } else {
-            timeLeft -= 10
+            timeLeft -= 10;
             correctWrong.textContent = 'Wrong!';
             newQuestion();
         }
