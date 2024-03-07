@@ -88,9 +88,7 @@ startButton.addEventListener("click", function(event) {
 viewHighscoreButton.addEventListener("click", function(event) {
     // need to create something to open the highscores-screen
     viewHighScoreScreen();
-    console.log(`length: ${highScoreList.length}`);
     for (let i=0; i < highScoreList.length; i++) {
-        console.log(`i: ${i}`);
         var newHighScore = document.createElement("li")
         newHighScore.textContent = `Name: ${highScoreList[i].playerName} || Score: ${highScoreList[i].playerScore}`;
         highscoresListHTML.appendChild(newHighScore);
@@ -118,7 +116,6 @@ submitHighScore.addEventListener("click", function(event) {
     localStorage.setItem('highScoreList', JSON.stringify(highScoreList));
 
     for (let i=0; i < highScoreList.length; i++) {
-        console.log(`i: ${i}`);
         var newHighScore = document.createElement("li")
         newHighScore.textContent = `Name: ${highScoreList[i].playerName} || Score: ${highScoreList[i].playerScore}`;
         highscoresListHTML.appendChild(newHighScore);
