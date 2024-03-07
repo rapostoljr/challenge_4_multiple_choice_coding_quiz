@@ -134,9 +134,9 @@ li {
     display: none;
 }
 
-.go-back-btn, .clear-highscore-btn {
+.go-back-btn, .clear-highscore-btn, .highscore-submit-btn {
     margin: 5px auto;
-    padding: 2px;
+    padding: 2px 5px;
     font-size: 20px;
     border-radius: 12px;
     border: 1px solid black;
@@ -144,7 +144,7 @@ li {
     background: var(--btn-background);
 }
 
-.go-back-btn:hover, .clear-highscore-btn:hover {
+.go-back-btn:hover, .clear-highscore-btn:hover, .highscore-submit-btn:hover {
     color: var(--btn-text);
     background: var(--btn-alt-background);
 }

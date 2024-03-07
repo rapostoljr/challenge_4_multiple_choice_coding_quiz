@@ -85,14 +85,17 @@ startButton.addEventListener("click", function(event) {
     viewQuestionScreen();
 })
 
-viewHighscoreButton.addEventListener("click", function(event) {
-    // need to create something to open the highscores-screen
-    viewHighScoreScreen();
+function renderHighScore() {
     for (let i=0; i < highScoreList.length; i++) {
-        var newHighScore = document.createElement("li")
+        var newHighScore = document.createElement("li");
         newHighScore.textContent = `Name: ${highScoreList[i].playerName} || Score: ${highScoreList[i].playerScore}`;
         highscoresListHTML.appendChild(newHighScore);
     }
+}
+
+viewHighscoreButton.addEventListener("click", function(event) {
+    // need to create something to open the highscores-screen
+    viewHighScoreScreen();
 })
 
 goBackBtn.addEventListener("click", function(event) {
@@ -115,16 +118,17 @@ submitHighScore.addEventListener("click", function(event) {
     highScoreList.push(localHighScore);
     localStorage.setItem('highScoreList', JSON.stringify(highScoreList));
 
-    for (let i=0; i < highScoreList.length; i++) {
-        var newHighScore = document.createElement("li")
-        newHighScore.textContent = `Name: ${highScoreList[i].playerName} || Score: ${highScoreList[i].playerScore}`;
-        highscoresListHTML.appendChild(newHighScore);
-    }
+    var newHighScore = document.createElement("li")
+    newHighScore.textContent = `Name: ${localHighScore.playerName} || Score: ${localHighScore.playerScore}`;
+    highscoresListHTML.appendChild(newHighScore);
+    
     viewHighScoreScreen();
 })
 
 clearHighScoreBtn.addEventListener("click", function(event) {
     localStorage.clear();
     localStorage.setItem('highScoreList', JSON.stringify(emptyHighScoreList));
-    liHighScore.textContent = "";
+    highscoresListHTML.textContent = "";
 })
+
+renderHighScore();
